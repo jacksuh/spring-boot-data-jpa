@@ -19,6 +19,7 @@ public class TutorialController {
     @Autowired
     TutorialRepository tutorialRepository;
 
+    @GetMapping("/tutorials")
     public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title){
         try{
             List<Tutorial> tutorials = new ArrayList<Tutorial>();
@@ -49,6 +50,7 @@ public class TutorialController {
         }
     }
 
+    @PostMapping("/tutorials")
     public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial){
         try{
             Tutorial _tutorial = tutorialRepository.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), false));
